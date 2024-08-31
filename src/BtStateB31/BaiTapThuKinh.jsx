@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../../public/ImgGlasses/model.jpg";
 import GlassesV1 from "../../public/ImgGlasses/v1.png";
+import BackgroundImg from "../../public/ImgGlasses/background.jpg";
 import "./style.css";
 
 const BaiTapThuKinh = () => {
@@ -120,6 +121,9 @@ const BaiTapThuKinh = () => {
     backgroundColor: "rgba(255,127,0,0.5)",
     textAlign: "left",
     height: "127px",
+  };
+  const bgImg = {
+    backgroundImage: BackgroundImg,
   };
 
   return (
