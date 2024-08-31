@@ -1,0 +1,14 @@
+@keyframes animation {
+    from {
+        opacity: 0;
+        top: 180px;
+    }
+    to {
+        opacity: 1;
+        top: 80px;
+    }
+}
+
+.style_Glasses {
+    animation: animation 0.5 linear;
+}

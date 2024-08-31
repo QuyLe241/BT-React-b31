@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../../public/ImgGlasses/model.jpg";
 import GlassesV1 from "../../public/ImgGlasses/v1.png";
+import "./style.css";
 
 const BaiTapThuKinh = () => {
   const [glasses, setGlasses] = useState({
@@ -8,6 +9,8 @@ const BaiTapThuKinh = () => {
     name: "GUCCI G8850U",
     desc: "Light pink square lenses define these sunglasses, ending with a mother of pearl effect tip.",
   });
+
+  const [selectedGlassesId, setSelectedGlassesId] = useState(1);
 
   const dataListGlasses = [
     {
@@ -81,16 +84,20 @@ const BaiTapThuKinh = () => {
       name: glassesItem.name,
       desc: glassesItem.desc,
     });
+    setSelectedGlassesId(glassesItem.id);
   };
 
   const renderGlassesList = () => {
     return dataListGlasses.map((glassesItem, index) => {
+      const isSelected = glassesItem.id === selectedGlassesId;
       return (
         <img
           key={index}
           onClick={() => handleGlassesChange(glassesItem)}
           src={glassesItem.url}
-          className="mx-3 border p-2 rounded-2"
+          className={`mx-3 border p-2 rounded-2 ${
+            isSelected ? "style_Glasses" : ""
+          }`}
           style={{ width: "100px", cursor: "pointer" }}
           alt={glassesItem.name}
         />
@@ -139,7 +146,7 @@ const BaiTapThuKinh = () => {
                   src={Modal}
                   alt=""
                   style={{ width: "250px" }}
-                  className=" position-absolute"
+                  className="position-absolute"
                 />
                 <img
                   src={glasses.url}
@@ -147,12 +154,14 @@ const BaiTapThuKinh = () => {
                   className="position-absolute"
                   alt={glasses.name}
                 />
-                <div
-                  className="position-relative fw-bold text-white"
-                  style={infoGlasses}
-                >
-                  <p>Tên Kính: {glasses.name}</p>
-                  <p>Mô tả: {glasses.desc}</p>
+                <div className="position-relative " style={infoGlasses}>
+                  <p
+                    className="fw-bold"
+                    style={{ marginBottom: "1px", color: "#520a66" }}
+                  >
+                    Tên Kính: {glasses.name}
+                  </p>
+                  <p className="">Mô tả: {glasses.desc}</p>
                 </div>
               </div>
             </div>
