@@ -126,7 +126,7 @@ const BaiTapThuKinh = () => {
   return (
     <div
       style={{
-        backgroundImage: "url(./public/ImgGlasses/background.jpg)",
+        backgroundImage: `url(${BackgroundImg})`,
         minHeight: "100vh",
         backgroundSize: "100%",
         backgroundRepeat: "no-repeat",
