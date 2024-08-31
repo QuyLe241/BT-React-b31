@@ -1,15 +1,99 @@
-import React from "react";
-import dataGlasses from "../Data/dataGlasses.json";
+import React, { useState } from "react";
 import Modal from "../../public/ImgGlasses/model.jpg";
 import GlassesV1 from "../../public/ImgGlasses/v1.png";
 
 const BaiTapThuKinh = () => {
+  const [glasses, setGlasses] = useState({
+    url: GlassesV1,
+    name: "GUCCI G8850U",
+    desc: "Light pink square lenses define these sunglasses, ending with a mother of pearl effect tip.",
+  });
+
+  const dataListGlasses = [
+    {
+      id: 1,
+      price: 30,
+      name: "GUCCI G8850U",
+      url: "../../public/ImgGlasses/v1.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+    {
+      id: 2,
+      price: 50,
+      name: "GUCCI G8759H",
+      url: "../../public/ImgGlasses/v2.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+    {
+      id: 3,
+      price: 30,
+      name: "DIOR D6700HQ",
+      url: "../../public/ImgGlasses/v3.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+    {
+      id: 4,
+      price: 70,
+      name: "DIOR D6005U",
+      url: "../../public/ImgGlasses/v4.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+    {
+      id: 5,
+      price: 40,
+      name: "PRADA P8750",
+      url: "../../public/ImgGlasses/v5.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+    {
+      id: 6,
+      price: 60,
+      name: "PRADA P9700",
+      url: "../../public/ImgGlasses/v6.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+    {
+      id: 7,
+      price: 80,
+      name: "FENDI F8750",
+      url: "../../public/ImgGlasses/v7.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+    {
+      id: 8,
+      price: 100,
+      name: "FENDI F8500",
+      url: "../../public/ImgGlasses/v8.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+    {
+      id: 9,
+      price: 60,
+      name: "FENDI F4300",
+      url: "../../public/ImgGlasses/v9.png",
+      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+    },
+  ];
+
+  const handleGlassesChange = (glassesItem) => {
+    setGlasses({
+      url: glassesItem.url,
+      name: glassesItem.name,
+      desc: glassesItem.desc,
+    });
+  };
+
   const renderGlassesList = () => {
-    return dataGlasses.map((glassesItem, index) => {
+    return dataListGlasses.map((glassesItem, index) => {
       return (
-        <>
-          <img src={glassesItem.url} style={{ width: "100px" }} alt="" />
-        </>
+        <img
+          key={index}
+          onClick={() => handleGlassesChange(glassesItem)}
+          src={glassesItem.url}
+          className="mx-3 border p-2 rounded-2"
+          style={{ width: "100px", cursor: "pointer" }}
+          alt={glassesItem.name}
+        />
       );
     });
   };
@@ -20,6 +104,7 @@ const BaiTapThuKinh = () => {
     right: "116px",
     opacity: "0.6",
   };
+
   const infoGlasses = {
     width: "250px",
     top: "178px",
@@ -29,9 +114,9 @@ const BaiTapThuKinh = () => {
     textAlign: "left",
     height: "127px",
   };
+
   return (
     <div
-      className=""
       style={{
         backgroundImage: "url(./public/ImgGlasses/background.jpg)",
         minHeight: "100vh",
@@ -39,10 +124,7 @@ const BaiTapThuKinh = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div
-        className=""
-        style={{ backgroundColor: "rgba(0,0,0,0.6)", minHeight: "100vh" }}
-      >
+      <div style={{ backgroundColor: "rgba(0,0,0,0.6)", minHeight: "100vh" }}>
         <h3
           style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
           className="text-center text-white p-3"
@@ -60,24 +142,24 @@ const BaiTapThuKinh = () => {
                   className=" position-absolute"
                 />
                 <img
-                  src={GlassesV1}
+                  src={glasses.url}
                   style={styleGlasses}
                   className="position-absolute"
-                  alt=""
+                  alt={glasses.name}
                 />
                 <div
                   className="position-relative fw-bold text-white"
                   style={infoGlasses}
                 >
-                  <p className="">Tên kính:</p>
-                  <p>Mô tả:</p>
+                  <p>Tên Kính: {glasses.name}</p>
+                  <p>Mô tả: {glasses.desc}</p>
                 </div>
               </div>
             </div>
             <div className="col-6">
-              <img src={Modal} alt="" style={{ width: "250px" }} className="" />
+              <img src={Modal} alt="" style={{ width: "250px" }} />
             </div>
-            <div className="bg-white container text-center mt-3">
+            <div className="bg-white container text-center mx-1 mt-5 py-3">
               {renderGlassesList()}
             </div>
           </div>
