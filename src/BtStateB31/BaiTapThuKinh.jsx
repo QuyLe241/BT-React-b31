@@ -122,9 +122,6 @@ const BaiTapThuKinh = () => {
     textAlign: "left",
     height: "127px",
   };
-  const bgImg = {
-    backgroundImage: BackgroundImg,
-  };
 
   return (
     <div
