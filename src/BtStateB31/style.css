@@ -10,5 +10,6 @@
 }
 
 .style_Glasses {
-    animation: animation 0.5 linear;
+    box-shadow: 2px 3px 2px rgb(167, 161, 161);
+    transition: all 0.3s;
 }
